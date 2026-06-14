@@ -285,7 +285,7 @@
     "deck": "Listy 6-9: residua i calki",
     "source": "hashcards/03-residua-i-calki.md",
     "question": "Jakie jest residuum w punkcie pozornie osobliwym?",
-    "answer": "$$\n\\Res_{z_0}f=0.\n$$"
+    "answer": "$$\n\\operatorname{Res}_{z_0}f=0.\n$$"
   },
   {
     "id": "c037",
@@ -293,7 +293,7 @@
     "deck": "Listy 6-9: residua i calki",
     "source": "hashcards/03-residua-i-calki.md",
     "question": "Jak policzyć residuum w biegunie prostym?",
-    "answer": "$$\n\\Res_{z_0}f=\\lim_{z\\to z_0}(z-z_0)f(z).\n$$"
+    "answer": "$$\n\\operatorname{Res}_{z_0}f=\\lim_{z\\to z_0}(z-z_0)f(z).\n$$"
   },
   {
     "id": "c038",
@@ -301,7 +301,7 @@
     "deck": "Listy 6-9: residua i calki",
     "source": "hashcards/03-residua-i-calki.md",
     "question": "Jak policzyć residuum ilorazu $g/h$ w prostym zerze mianownika?",
-    "answer": "Jeśli $h(z_0)=0$ i $h'(z_0)\\ne0$, to\n$$\n\\Res_{z_0}\\frac{g}{h}=\\frac{g(z_0)}{h'(z_0)}.\n$$"
+    "answer": "Jeśli $h(z_0)=0$ i $h'(z_0)\\ne0$, to\n$$\n\\operatorname{Res}_{z_0}\\frac{g}{h}=\\frac{g(z_0)}{h'(z_0)}.\n$$"
   },
   {
     "id": "c039",
@@ -309,7 +309,7 @@
     "deck": "Listy 6-9: residua i calki",
     "source": "hashcards/03-residua-i-calki.md",
     "question": "Jak policzyć residuum w biegunie rzędu $k$?",
-    "answer": "$$\n\\Res_{z_0}f\n=\\frac1{(k-1)!}\n\\lim_{z\\to z_0}\n\\frac{d^{k-1}}{dz^{k-1}}\n\\left((z-z_0)^kf(z)\\right).\n$$"
+    "answer": "$$\n\\operatorname{Res}_{z_0}f\n=\\frac1{(k-1)!}\n\\lim_{z\\to z_0}\n\\frac{d^{k-1}}{dz^{k-1}}\n\\left((z-z_0)^kf(z)\\right).\n$$"
   },
   {
     "id": "c040",
@@ -325,7 +325,7 @@
     "deck": "Listy 6-9: residua i calki",
     "source": "hashcards/03-residua-i-calki.md",
     "question": "Podaj twierdzenie o residuach.",
-    "answer": "Jeśli wewnątrz dodatnio zorientowanej krzywej $\\Gamma$ leżą izolowane osobliwości $z_1,\\ldots,z_n$, to\n$$\n\\int_\\Gamma f(z)\\,dz\n=2\\pi i\\sum_{k=1}^n\\Res_{z_k}f.\n$$"
+    "answer": "Jeśli wewnątrz dodatnio zorientowanej krzywej $\\Gamma$ leżą izolowane osobliwości $z_1,\\ldots,z_n$, to\n$$\n\\int_\\Gamma f(z)\\,dz\n=2\\pi i\\sum_{k=1}^n\\operatorname{Res}_{z_k}f.\n$$"
   },
   {
     "id": "c042",
@@ -389,7 +389,7 @@
     "deck": "Listy 6-9: residua i calki",
     "source": "hashcards/03-residua-i-calki.md",
     "question": "Jaki jest algorytm dla całki $\\int_{-\\infty}^{\\infty}R(x)\\,dx$ przez górny półokrąg?",
-    "answer": "1. Weź $f(z)=R(z)$.\n2. Sprawdź brak biegunów na osi rzeczywistej.\n3. Sprawdź zbieżność i zanik całki po łuku.\n4. Policz residua biegunów z $\\Im z>0$.\n5. Użyj $\\int_{-\\infty}^{\\infty}R(x)\\,dx=2\\pi i\\sum\\Res f$."
+    "answer": "1. Weź $f(z)=R(z)$.\n2. Sprawdź brak biegunów na osi rzeczywistej.\n3. Sprawdź zbieżność i zanik całki po łuku.\n4. Policz residua biegunów z $\\Im z>0$.\n5. Użyj $\\int_{-\\infty}^{\\infty}R(x)\\,dx=2\\pi i\\sum\\operatorname{Res} f$."
   },
   {
     "id": "c050",
@@ -421,7 +421,7 @@
     "deck": "Listy 6-9: residua i calki",
     "source": "hashcards/03-residua-i-calki.md",
     "question": "Jak zdefiniowane jest residuum w nieskończoności?",
-    "answer": "$$\n\\Res_\\infty f\n=-\\Res_{0}\\left(\\frac1{z^2}f\\left(\\frac1z\\right)\\right).\n$$"
+    "answer": "$$\n\\operatorname{Res}_\\infty f\n=-\\operatorname{Res}_{0}\\left(\\frac1{z^2}f\\left(\\frac1z\\right)\\right).\n$$"
   },
   {
     "id": "c054",
@@ -429,7 +429,7 @@
     "deck": "Listy 6-9: residua i calki",
     "source": "hashcards/03-residua-i-calki.md",
     "question": "Jaki jest związek sumy wszystkich residuów skończonych z residuum w nieskończoności?",
-    "answer": "$$\n\\sum_k\\Res_{z_k}f=-\\Res_\\infty f.\n$$"
+    "answer": "$$\n\\sum_k\\operatorname{Res}_{z_k}f=-\\operatorname{Res}_\\infty f.\n$$"
   },
   {
     "id": "c055",
@@ -509,7 +509,7 @@
     "deck": "Listy 6-9: maksimum, Schwarz i Rouche",
     "source": "hashcards/04-maksimum-schwarz-rouche.md",
     "question": "Jakie residuum ma $f'/f$ w zerze $f$ rzędu $k$?",
-    "answer": "$$\n\\Res_{z_0}\\frac{f'}f=k.\n$$"
+    "answer": "$$\n\\operatorname{Res}_{z_0}\\frac{f'}f=k.\n$$"
   },
   {
     "id": "c065",
@@ -517,7 +517,7 @@
     "deck": "Listy 6-9: maksimum, Schwarz i Rouche",
     "source": "hashcards/04-maksimum-schwarz-rouche.md",
     "question": "Jakie residuum ma $f'/f$ w biegunie $f$ rzędu $k$?",
-    "answer": "$$\n\\Res_{z_0}\\frac{f'}f=-k.\n$$"
+    "answer": "$$\n\\operatorname{Res}_{z_0}\\frac{f'}f=-k.\n$$"
   },
   {
     "id": "c066",
