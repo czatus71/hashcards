@@ -297,6 +297,7 @@
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
 <script>
 const state = { cards: [], filtered: [], activeIndex: 0, showAnswer: false };
+const DATA_VERSION = 'res-operator-c7d1fa3';
 const els = {
   q: document.getElementById('q'),
   topic: document.getElementById('topic'),
@@ -319,6 +320,8 @@ const els = {
 
 const escapeHTML = s => String(s).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const normalize = s => String(s).toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '');
+const RES_COMMAND = new RegExp(String.fromCharCode(92, 92) + 'Res(?=[^A-Za-z]|$)', 'g');
+const normalizeLatex = s => String(s).replace(RES_COMMAND, '\\operatorname{Res}');
 
 function renderMath(el) {
   if (!window.renderMathInElement || !el) return;
@@ -380,8 +383,8 @@ function renderViewer() {
     <span class="badge">${escapeHTML(card.deck)}</span>
     <span class="badge source">${escapeHTML(card.source)}</span>
   `;
-  els.viewerQuestion.innerHTML = escapeHTML(card.question);
-  els.viewerAnswer.innerHTML = escapeHTML(card.answer);
+  els.viewerQuestion.innerHTML = escapeHTML(normalizeLatex(card.question));
+  els.viewerAnswer.innerHTML = escapeHTML(normalizeLatex(card.answer));
   renderMath(els.viewerQuestion);
   renderMath(els.viewerAnswer);
   els.viewerAnswer.classList.toggle('hidden', !state.showAnswer);
@@ -405,7 +408,7 @@ function renderList() {
   for (const [idx, card] of items.entries()) {
     const li = document.createElement('li');
     li.className = 'row' + (idx === state.activeIndex ? ' active' : '');
-    li.innerHTML = `<span class="row-title">${escapeHTML(card.question)}</span><span class="row-topic">${escapeHTML(card.topic)}</span>`;
+    li.innerHTML = `<span class="row-title">${escapeHTML(normalizeLatex(card.question))}</span><span class="row-topic">${escapeHTML(card.topic)}</span>`;
     renderMath(li.querySelector('.row-title'));
     li.addEventListener('click', () => setActive(idx, true));
     els.cards.appendChild(li);
@@ -439,8 +442,12 @@ function toggleAnswer() {
 }
 
 async function init() {
-  const res = await fetch('cards.json');
-  state.cards = await res.json();
+  const res = await fetch(`cards.json?v=${DATA_VERSION}`, { cache: 'no-cache' });
+  state.cards = (await res.json()).map(card => ({
+    ...card,
+    question: normalizeLatex(card.question),
+    answer: normalizeLatex(card.answer)
+  }));
   buildFilters();
   updateSummary();
   state.filtered = getFiltered();
