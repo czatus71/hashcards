@@ -586,49 +586,305 @@
   {
     "id": "c074",
     "topic": "Statystyka",
-    "deck": "Statystyka — listy 6–10",
-    "source": "reference/statystyka-listy-6-10.html",
-    "question": "Estymacja",
-    "answer": "Momenty: EX^j=(1/n)ΣX_i^j\nMLE: argmax l(θ)"
+    "deck": "Estymacja — metody",
+    "source": "teach-statystyka/lessons",
+    "question": "Kiedy użyć metody momentów?",
+    "answer": "Gdy parametr $\\theta$ da się wyznaczyć z momentów rozkładu. Dla $k$ parametrów przyrównujesz $k$ momentów:\n$$\n\\mathbb E_\\theta X^j=\\frac1n\\sum_{i=1}^n X_i^j,\\qquad j=1,\\ldots,k.\n$$"
   },
   {
     "id": "c075",
     "topic": "Statystyka",
-    "deck": "Statystyka — listy 6–10",
-    "source": "reference/statystyka-listy-6-10.html",
-    "question": "Ryzyko",
-    "answer": "MSE = Var + bias²\nR(T,θ)=E L(T,θ)"
+    "deck": "Estymacja — metody",
+    "source": "teach-statystyka/lessons",
+    "question": "Jak wygląda estymator metodą momentów dla $N(\\mu,\\sigma^2)$?",
+    "answer": "Z równań $\\mathbb E X=\\mu$ oraz $\\mathbb E X^2=\\sigma^2+\\mu^2$ dostajesz:\n$$\n\\hat\\mu=\\overline X,\\qquad \\hat\\sigma^2=\\frac1n\\sum_{i=1}^n (X_i-\\overline X)^2.\n$$"
   },
   {
     "id": "c076",
     "topic": "Statystyka",
-    "deck": "Statystyka — listy 6–10",
-    "source": "reference/statystyka-listy-6-10.html",
-    "question": "Dostateczność",
-    "answer": "f(x;θ)=g_θ(T(x))h(x)"
+    "deck": "Estymacja — metody",
+    "source": "teach-statystyka/lessons",
+    "question": "Kiedy użyć metody kwantyli?",
+    "answer": "Gdy parametr można zapisać przez kwantyle rozkładu. Schemat:\n$$\nx_p=F_\\theta^{-1}(p),\\qquad \\theta=g(x_{p_1},\\ldots,x_{p_s}),\n$$\nwięc estymator to\n$$\n\\hat\\theta=g(\\hat x_{p_1},\\ldots,\\hat x_{p_s}).\n$$"
   },
   {
     "id": "c077",
     "topic": "Statystyka",
-    "deck": "Statystyka — listy 6–10",
-    "source": "reference/statystyka-listy-6-10.html",
-    "question": "UMVUE",
-    "answer": "T dostateczna + zupełna\nW nieobciążony\nE[W|T]"
+    "deck": "Estymacja — metody",
+    "source": "teach-statystyka/lessons",
+    "question": "Na czym polega metoda plug-in?",
+    "answer": "Zastępujesz dystrybuantę teoretyczną $F$ empiryczną $\\hat F_n$:\n$$\n\\theta=T(F)\\quad\\Longrightarrow\\quad\\hat\\theta=T(\\hat F_n).\n$$\nJeśli $\\theta=\\int \\varphi(x)\\,dF(x)$, to\n$$\n\\hat\\theta=\\frac1n\\sum_{i=1}^n\\varphi(X_i).\n$$"
   },
   {
     "id": "c078",
     "topic": "Statystyka",
-    "deck": "Statystyka — listy 6–10",
-    "source": "reference/statystyka-listy-6-10.html",
-    "question": "Przedziały",
-    "answer": "a ≤ Q(X;θ) ≤ b\n→ odwróć względem θ"
+    "deck": "Estymacja — MLE",
+    "source": "teach-statystyka/lessons",
+    "question": "Jak zdefiniowany jest estymator największej wiarygodności?",
+    "answer": "Dla funkcji wiarygodności $L(\\theta;x)$:\n$$\n\\hat\\theta_{\\mathrm{MLE}}\\in\\operatorname*{arg\\,max}_{\\theta\\in\\Theta} L(\\theta;x).\n$$\nZwykle maksymalizuje się log-wiarygodność $\\ell(\\theta)=\\log L(\\theta)$. "
   },
   {
     "id": "c079",
     "topic": "Statystyka",
-    "deck": "Statystyka — listy 6–10",
-    "source": "reference/statystyka-listy-6-10.html",
-    "question": "Testy",
-    "answer": "NP: f1/f0 > c\nMLR: ogon T\nLR: sup_H0 l / sup_Θ l"
+    "deck": "Estymacja — MLE",
+    "source": "teach-statystyka/lessons",
+    "question": "Jaki jest typowy algorytm liczenia MLE?",
+    "answer": "1. Napisz $L(\\theta;x)=\\prod_i f_\\theta(x_i)$.\n2. Weź $\\ell(\\theta)=\\log L(\\theta;x)$.\n3. Rozwiąż $\\ell'(\\theta)=0$.\n4. Sprawdź brzeg parametru i maksimum."
+  },
+  {
+    "id": "c080",
+    "topic": "Statystyka",
+    "deck": "Estymacja — MLE",
+    "source": "teach-statystyka/lessons",
+    "question": "Jak wygląda MLE dla rozkładu Poissona?",
+    "answer": "Jeśli $X_i\\sim\\operatorname{Pois}(\\lambda)$, to\n$$\nL(\\lambda)\\propto \\lambda^{\\sum_i x_i}e^{-n\\lambda},\n$$\nwięc\n$$\n\\ell'(\\lambda)=\\frac{\\sum_i x_i}{\\lambda}-n=0,\\qquad \\hat\\lambda=\\overline X.\n$$"
+  },
+  {
+    "id": "c081",
+    "topic": "Statystyka",
+    "deck": "Jakość estymatorów",
+    "source": "teach-statystyka/lessons",
+    "question": "Co to jest obciążenie estymatora?",
+    "answer": "Dla estymatora $T$ parametru $g(\\theta)$ obciążenie to\n$$\nb_T(\\theta)=\\mathbb E_\\theta[T]-g(\\theta).\n$$\nEstymator jest nieobciążony, gdy $b_T(\\theta)=0$ dla każdego $\\theta$. "
+  },
+  {
+    "id": "c082",
+    "topic": "Statystyka",
+    "deck": "Jakość estymatorów",
+    "source": "teach-statystyka/lessons",
+    "question": "Co to jest średni błąd kwadratowy?",
+    "answer": "$$\n\\operatorname{MSE}_\\theta(T)=\\mathbb E_\\theta[(T-g(\\theta))^2].\n$$\nRozkład na wariancję i obciążenie:\n$$\n\\operatorname{MSE}_\\theta(T)=\\operatorname{Var}_\\theta(T)+b_T(\\theta)^2.\n$$"
+  },
+  {
+    "id": "c083",
+    "topic": "Statystyka",
+    "deck": "Jakość estymatorów",
+    "source": "teach-statystyka/lessons",
+    "question": "Co znaczy, że estymator jest zgodny?",
+    "answer": "Ciąg estymatorów $T_n$ jest zgodny dla $\\theta$, gdy dla każdego $\\varepsilon>0$:\n$$\n\\mathbb P_\\theta(|T_n-\\theta|\\ge\\varepsilon)\\to0.\n$$\nCzyli $T_n\\xrightarrow{P}\\theta$. "
+  },
+  {
+    "id": "c084",
+    "topic": "Statystyka",
+    "deck": "Jakość estymatorów",
+    "source": "teach-statystyka/lessons",
+    "question": "Jak użyć nierówności Czebyszewa do zgodności?",
+    "answer": "Wystarczy pokazać:\n$$\n\\mathbb E_\\theta[T_n]\\to\\theta\\quad\\text{oraz}\\quad\\operatorname{Var}_\\theta(T_n)\\to0.\n$$\nWtedy $T_n\\xrightarrow{P}\\theta$. "
+  },
+  {
+    "id": "c085",
+    "topic": "Statystyka",
+    "deck": "Jakość estymatorów",
+    "source": "teach-statystyka/lessons",
+    "question": "Co mówi metoda delta?",
+    "answer": "Jeśli\n$$\na_n(X_n-c)\\Rightarrow V,\\qquad g'(c)\\ne0,\n$$\nto\n$$\na_n(g(X_n)-g(c))\\Rightarrow g'(c)V.\n$$"
+  },
+  {
+    "id": "c086",
+    "topic": "Statystyka",
+    "deck": "Jakość estymatorów",
+    "source": "teach-statystyka/lessons",
+    "question": "Jaka jest informacja Fishera dla jednej obserwacji?",
+    "answer": "Dla gęstości $f_\\theta$:\n$$\nI_1(\\theta)=\\mathbb E_\\theta\\left[\\left(\\frac{\\partial}{\\partial\\theta}\\log f_\\theta(X)\\right)^2\\right].\n$$\nDla próby iid:\n$$\nI_n(\\theta)=nI_1(\\theta).\n$$"
+  },
+  {
+    "id": "c087",
+    "topic": "Statystyka",
+    "deck": "Jakość estymatorów",
+    "source": "teach-statystyka/lessons",
+    "question": "Co mówi nierówność Craméra–Rao?",
+    "answer": "Dla nieobciążonego estymatora $T$ funkcji $g(\\theta)$:\n$$\n\\operatorname{Var}_\\theta(T)\\ge\\frac{(g'(\\theta))^2}{I_n(\\theta)}.\n$$"
+  },
+  {
+    "id": "c088",
+    "topic": "Statystyka",
+    "deck": "Jakość estymatorów",
+    "source": "teach-statystyka/lessons",
+    "question": "Kiedy estymator jest efektywny w sensie Craméra–Rao?",
+    "answer": "Gdy jest nieobciążony i osiąga dolne ograniczenie:\n$$\n\\operatorname{Var}_\\theta(T)=\\frac{(g'(\\theta))^2}{I_n(\\theta)}.\n$$"
+  },
+  {
+    "id": "c089",
+    "topic": "Statystyka",
+    "deck": "Redukcja statystyk",
+    "source": "teach-statystyka/lessons",
+    "question": "Co znaczy, że statystyka jest dostateczna?",
+    "answer": "$T(X)$ jest dostateczna dla $\\theta$, gdy po poznaniu $T(X)$ próbka nie zawiera już dodatkowej informacji o $\\theta$. Formalnie używa się kryterium faktoryzacji."
+  },
+  {
+    "id": "c090",
+    "topic": "Statystyka",
+    "deck": "Redukcja statystyk",
+    "source": "teach-statystyka/lessons",
+    "question": "Jak brzmi kryterium faktoryzacji Neymana–Fishera?",
+    "answer": "$T$ jest dostateczna wtedy, gdy gęstość lub pmf próby można zapisać jako\n$$\nf_\\theta(x)=g_\\theta(T(x))h(x).\n$$\nCzynnik $h(x)$ nie zależy od $\\theta$. "
+  },
+  {
+    "id": "c091",
+    "topic": "Statystyka",
+    "deck": "Redukcja statystyk",
+    "source": "teach-statystyka/lessons",
+    "question": "Jak rozpoznać statystykę minimalnie dostateczną?",
+    "answer": "Często używa się ilorazu wiarygodności. Statystyka $T$ jest minimalnie dostateczna, jeśli\n$$\n\\frac{f_\\theta(x)}{f_\\theta(y)}\\text{ nie zależy od }\\theta\n\\quad\\Longleftrightarrow\\quad T(x)=T(y).\n$$"
+  },
+  {
+    "id": "c092",
+    "topic": "Statystyka",
+    "deck": "Redukcja statystyk",
+    "source": "teach-statystyka/lessons",
+    "question": "Co znaczy zupełność statystyki?",
+    "answer": "$T$ jest zupełna, gdy\n$$\n\\mathbb E_\\theta[g(T)]=0\\text{ dla każdego }\\theta\n\\quad\\Longrightarrow\\quad\n\\mathbb P_\\theta(g(T)=0)=1\\text{ dla każdego }\\theta.\n$$"
+  },
+  {
+    "id": "c093",
+    "topic": "Statystyka",
+    "deck": "UMVUE",
+    "source": "teach-statystyka/lessons",
+    "question": "Co mówi twierdzenie Rao–Blackwella?",
+    "answer": "Jeśli $W$ jest nieobciążonym estymatorem $g(\\theta)$, a $T$ jest dostateczna, to\n$$\nW^*=\\mathbb E_\\theta[W\\mid T]\n$$\nteż jest nieobciążony i ma nie większą wariancję:\n$$\n\\operatorname{Var}_\\theta(W^*)\\le\\operatorname{Var}_\\theta(W).\n$$"
+  },
+  {
+    "id": "c094",
+    "topic": "Statystyka",
+    "deck": "UMVUE",
+    "source": "teach-statystyka/lessons",
+    "question": "Co mówi twierdzenie Lehmanna–Scheffégo?",
+    "answer": "Jeśli $T$ jest dostateczna i zupełna, a $W$ jest nieobciążony dla $g(\\theta)$, to\n$$\n\\mathbb E[W\\mid T]\n$$\njest jedynym UMVUE funkcji $g(\\theta)$. "
+  },
+  {
+    "id": "c095",
+    "topic": "Statystyka",
+    "deck": "UMVUE",
+    "source": "teach-statystyka/lessons",
+    "question": "Jaki jest praktyczny algorytm szukania UMVUE?",
+    "answer": "1. Znajdź statystykę dostateczną i zupełną $T$.\n2. Znajdź dowolny nieobciążony estymator $W$.\n3. Policz\n$$\n\\mathbb E[W\\mid T].\n$$\nWynik jest UMVUE. "
+  },
+  {
+    "id": "c096",
+    "topic": "Statystyka",
+    "deck": "UMVUE",
+    "source": "teach-statystyka/lessons",
+    "question": "Co mówi twierdzenie Basu?",
+    "answer": "Jeśli $T$ jest zupełna i dostateczna, a $A$ jest ancillary, czyli jej rozkład nie zależy od $\\theta$, to\n$$\nT\\perp A.\n$$"
+  },
+  {
+    "id": "c097",
+    "topic": "Statystyka",
+    "deck": "Przedziały ufności",
+    "source": "teach-statystyka/lessons",
+    "question": "Co oznacza poziom ufności $1-\\alpha$?",
+    "answer": "Przedział $[L(X),U(X)]$ ma poziom ufności $1-\\alpha$, gdy\n$$\n\\mathbb P_\\theta\\bigl(\\theta\\in[L(X),U(X)]\\bigr)\\ge 1-\\alpha.\n$$\nTo własność procedury, nie prawdopodobieństwo po zaobserwowaniu danych."
+  },
+  {
+    "id": "c098",
+    "topic": "Statystyka",
+    "deck": "Przedziały ufności",
+    "source": "teach-statystyka/lessons",
+    "question": "Co to jest funkcja centralna?",
+    "answer": "Funkcja centralna $Q(X;\\theta)$ ma rozkład niezależny od $\\theta$. Wybierasz $a,b$ tak, by\n$$\n\\mathbb P(a\\le Q(X;\\theta)\\le b)=1-\\alpha,\n$$\na potem odwracasz nierówność względem $\\theta$. "
+  },
+  {
+    "id": "c099",
+    "topic": "Statystyka",
+    "deck": "Przedziały ufności",
+    "source": "teach-statystyka/lessons",
+    "question": "Jaki jest przedział ufności dla średniej normalnej przy znanym $\\sigma$?",
+    "answer": "Jeśli $X_i\\sim N(\\mu,\\sigma^2)$ i $\\sigma$ jest znane, to\n$$\nQ=\\frac{\\sqrt n(\\overline X-\\mu)}{\\sigma}\\sim N(0,1).\n$$\nPrzedział:\n$$\n\\mu\\in\\left[\\overline X-z_{1-\\alpha/2}\\frac{\\sigma}{\\sqrt n},\\;\\overline X+z_{1-\\alpha/2}\\frac{\\sigma}{\\sqrt n}\\right].\n$$"
+  },
+  {
+    "id": "c100",
+    "topic": "Statystyka",
+    "deck": "Przedziały ufności",
+    "source": "teach-statystyka/lessons",
+    "question": "Jaki jest przedział ufności dla średniej normalnej przy nieznanym $\\sigma$?",
+    "answer": "Jeśli $X_i\\sim N(\\mu,\\sigma^2)$ i $\\sigma$ nieznane, to\n$$\nQ=\\frac{\\sqrt n(\\overline X-\\mu)}{S}\\sim t_{n-1}.\n$$\nPrzedział:\n$$\n\\mu\\in\\left[\\overline X-t_{n-1,1-\\alpha/2}\\frac{S}{\\sqrt n},\\;\\overline X+t_{n-1,1-\\alpha/2}\\frac{S}{\\sqrt n}\\right].\n$$"
+  },
+  {
+    "id": "c101",
+    "topic": "Statystyka",
+    "deck": "Przedziały ufności",
+    "source": "teach-statystyka/lessons",
+    "question": "Jak odwrócić jednostronną nierówność dla przedziału ufności?",
+    "answer": "Najpierw zapisz zdarzenie z prawdopodobieństwem $1-\\alpha$, np.\n$$\n\\mathbb P_\\theta(Q(X;\\theta)\\le c)=1-\\alpha.\n$$\nPotem algebraicznie rozwiąż nierówność $Q(X;\\theta)\\le c$ względem $\\theta$. "
+  },
+  {
+    "id": "c102",
+    "topic": "Statystyka",
+    "deck": "Testy hipotez",
+    "source": "teach-statystyka/lessons",
+    "question": "Co to jest błąd I rodzaju?",
+    "answer": "Błąd I rodzaju to odrzucenie prawdziwej hipotezy zerowej $H_0$. Rozmiar testu to\n$$\n\\sup_{\\theta\\in\\Theta_0}\\mathbb P_\\theta(\\text{odrzucamy }H_0)\\le\\alpha.\n$$"
+  },
+  {
+    "id": "c103",
+    "topic": "Statystyka",
+    "deck": "Testy hipotez",
+    "source": "teach-statystyka/lessons",
+    "question": "Co to jest błąd II rodzaju?",
+    "answer": "Błąd II rodzaju to nieodrzucenie fałszywej $H_0$. Dla konkretnego $\\theta\\in\\Theta_1$:\n$$\n\\beta_{II}(\\theta)=\\mathbb P_\\theta(\\text{nie odrzucamy }H_0).\n$$"
+  },
+  {
+    "id": "c104",
+    "topic": "Statystyka",
+    "deck": "Testy hipotez",
+    "source": "teach-statystyka/lessons",
+    "question": "Co to jest funkcja mocy testu?",
+    "answer": "Dla funkcji testowej $\\varphi(X)$ moc to\n$$\n\\beta(\\theta)=\\mathbb E_\\theta[\\varphi(X)]\n=\\mathbb P_\\theta(\\text{odrzucamy }H_0).\n$$"
+  },
+  {
+    "id": "c105",
+    "topic": "Statystyka",
+    "deck": "Testy hipotez",
+    "source": "teach-statystyka/lessons",
+    "question": "Co mówi twierdzenie Neymana–Pearsona?",
+    "answer": "Dla testowania prostego $H_0:\theta=\\theta_0$ przeciw prostemu $H_1:\theta=\\theta_1$ test najmocniejszy odrzuca $H_0$, gdy\n$$\n\\frac{f_{\\theta_1}(x)}{f_{\\theta_0}(x)}>c.\n$$"
+  },
+  {
+    "id": "c106",
+    "topic": "Statystyka",
+    "deck": "Testy hipotez",
+    "source": "teach-statystyka/lessons",
+    "question": "Jak wygląda test z monotonicznym ilorazem wiarygodności?",
+    "answer": "Dla $H_0:\theta\\le\\theta_0$ przeciw $H_1:\theta>\\theta_0$ i MLR względem $T(X)$ test UMP ma postać\n$$\n\\varphi(x)=\n\\begin{cases}\n1,&T(x)>c,\\\\\n\\gamma,&T(x)=c,\\\\\n0,&T(x)<c.\n\\end{cases}\n$$\nDobierz $c,\\gamma$ z warunku rozmiaru $\\alpha$. "
+  },
+  {
+    "id": "c107",
+    "topic": "Statystyka",
+    "deck": "Testy hipotez",
+    "source": "teach-statystyka/lessons",
+    "question": "Co to jest p-value?",
+    "answer": "To najmniejszy poziom istotności, przy którym odrzucasz $H_0$:\n$$\np(x)=\\inf\\{\\alpha:x\\in B_\\alpha\\}.\n$$\nDla testu prawostronnego często:\n$$\np(x)=\\sup_{\\theta\\in\\Theta_0}\\mathbb P_\\theta(T(X)\\ge T(x)).\n$$"
+  },
+  {
+    "id": "c108",
+    "topic": "Statystyka",
+    "deck": "Testy hipotez",
+    "source": "teach-statystyka/lessons",
+    "question": "Jak wygląda test ilorazu wiarygodności?",
+    "answer": "Statystyka LR:\n$$\n\\lambda(x)=\\frac{\\sup_{\\theta\\in\\Theta_0}L(\\theta;x)}{\\sup_{\\theta\\in\\Theta}L(\\theta;x)}.\n$$\nOdrzucasz $H_0$, gdy $\\lambda(x)<c$. "
+  },
+  {
+    "id": "c109",
+    "topic": "Statystyka",
+    "deck": "Testy hipotez",
+    "source": "teach-statystyka/lessons",
+    "question": "Kiedy test jest UMP?",
+    "answer": "Test jest UMP na poziomie $\\alpha$, gdy dla każdego $\\theta\\in\\Theta_1$ ma moc nie mniejszą niż każdy inny test poziomu $\\alpha$:\n$$\n\\beta_\\varphi(\\theta)\\ge\\beta_\\psi(\\theta).\n$$"
+  },
+  {
+    "id": "c110",
+    "topic": "Statystyka",
+    "deck": "Testy hipotez",
+    "source": "teach-statystyka/lessons",
+    "question": "Czym różni się test jednostronny od dwustronnego?",
+    "answer": "Jednostronny ma alternatywę typu $\\theta>\\theta_0$ albo $\\theta<\\theta_0$ i zwykle odrzuca w jednym ogonie. Dwustronny ma $\\theta\\ne\\theta_0$ i odrzuca w obu ogonach."
+  },
+  {
+    "id": "c111",
+    "topic": "Statystyka",
+    "deck": "Testy hipotez",
+    "source": "teach-statystyka/lessons",
+    "question": "Co oznacza poziom istotności $\\alpha$?",
+    "answer": "$\\alpha$ ogranicza prawdopodobieństwo fałszywego odrzucenia $H_0$:\n$$\n\\sup_{\\theta\\in\\Theta_0}\\mathbb P_\\theta(\\text{odrzucamy }H_0)\\le\\alpha.\n$$"
   }
 ]
