@@ -1,0 +1,634 @@
+[
+  {
+    "id": "c001",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: szeregi potegowe",
+    "source": "hashcards/01-szeregi-potegowe.md",
+    "question": "Kiedy szereg zespolony $\\sum z_n$, gdzie $z_n=x_n+iy_n$, jest zbieżny?",
+    "answer": "Wtedy i tylko wtedy, gdy zbieżne są oba szeregi rzeczywiste:\n$$\n\\sum x_n \\quad\\text{oraz}\\quad \\sum y_n.\n$$"
+  },
+  {
+    "id": "c002",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: szeregi potegowe",
+    "source": "hashcards/01-szeregi-potegowe.md",
+    "question": "Co daje bezwzględna zbieżność szeregu zespolonego?",
+    "answer": "Jeśli $\\sum |z_n|$ jest zbieżny, to $\\sum z_n$ też jest zbieżny."
+  },
+  {
+    "id": "c003",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: szeregi potegowe",
+    "source": "hashcards/01-szeregi-potegowe.md",
+    "question": "Podaj kryterium Weierstrassa dla szeregu funkcyjnego.",
+    "answer": "Jeśli dla każdego $z\\in V$ zachodzi $|f_n(z)|\\le a_n$ i szereg $\\sum a_n$ jest zbieżny, to $\\sum f_n$ jest zbieżny jednostajnie na $V$."
+  },
+  {
+    "id": "c004",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: szeregi potegowe",
+    "source": "hashcards/01-szeregi-potegowe.md",
+    "question": "Czym różni się zbieżność punktowa od jednostajnej?",
+    "answer": "W zbieżności punktowej numer $n_0$ może zależeć od punktu $z$. W zbieżności jednostajnej jeden numer $n_0$ działa dla wszystkich $z$ w zbiorze."
+  },
+  {
+    "id": "c005",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: szeregi potegowe",
+    "source": "hashcards/01-szeregi-potegowe.md",
+    "question": "Co oznacza niemal jednostajna zbieżność na obszarze $V$?",
+    "answer": "Zbieżność jednostajną na każdym zwartym podzbiorze $V$."
+  },
+  {
+    "id": "c006",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: szeregi potegowe",
+    "source": "hashcards/01-szeregi-potegowe.md",
+    "question": "Co wiadomo o szeregu potęgowym $\\sum_{n=0}^\\infty a_n(z-z_0)^n$ wewnątrz i na zewnątrz koła zbieżności?",
+    "answer": "- Dla $|z-z_0|<R$ jest zbieżny bezwzględnie i niemal jednostajnie.\n- Dla $|z-z_0|>R$ jest rozbieżny.\n- Dla $|z-z_0|=R$ każdy punkt trzeba zbadać osobno."
+  },
+  {
+    "id": "c007",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: szeregi potegowe",
+    "source": "hashcards/01-szeregi-potegowe.md",
+    "question": "Podaj wzór Cauchy'ego-Hadamarda na promień zbieżności.",
+    "answer": "$$\n\\frac1R=\\limsup_{n\\to\\infty}\\sqrt[n]{|a_n|}.\n$$"
+  },
+  {
+    "id": "c008",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: szeregi potegowe",
+    "source": "hashcards/01-szeregi-potegowe.md",
+    "question": "Kiedy można policzyć promień zbieżności z ilorazu kolejnych współczynników?",
+    "answer": "Gdy istnieje granica:\n$$\n\\frac1R=\\lim_{n\\to\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|.\n$$"
+  },
+  {
+    "id": "c009",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: szeregi potegowe",
+    "source": "hashcards/01-szeregi-potegowe.md",
+    "question": "Jak znaleźć promień szeregu zawierającego tylko potęgi $(z-z_0)^{kn}$?",
+    "answer": "Wprowadź $w=(z-z_0)^k$, policz promień $R_w$ szeregu w zmiennej $w$, a potem rozwiąż:\n$$\n|z-z_0|^k<R_w.\n$$\nZatem $R=\\sqrt[k]{R_w}$."
+  },
+  {
+    "id": "c010",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: szeregi potegowe",
+    "source": "hashcards/01-szeregi-potegowe.md",
+    "question": "Jak badać brzeg koła zbieżności szeregu potęgowego?",
+    "answer": "1. Podstaw $z-z_0=Re^{it}$.\n2. Sprawdź zbieżność bezwzględną.\n3. Jeśli jej nie ma, użyj np. kryterium Dirichleta.\n4. Osobno sprawdź punkty, w których składnik oscylacyjny przestaje oscylować."
+  },
+  {
+    "id": "c011",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: szeregi potegowe",
+    "source": "hashcards/01-szeregi-potegowe.md",
+    "question": "Podaj kryterium Dirichleta w wersji używanej na brzegu koła zbieżności.",
+    "answer": "Jeśli $a_n\\ge0$, ciąg $(a_n)$ maleje do zera, a sumy częściowe $\\sum_{k=1}^N b_k$ są wspólnie ograniczone, to $\\sum a_nb_n$ jest zbieżny."
+  },
+  {
+    "id": "c012",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: szeregi potegowe",
+    "source": "hashcards/01-szeregi-potegowe.md",
+    "question": "Kiedy sumy częściowe szeregu geometrycznego $\\sum_{k=0}^N q^k$ są ograniczone?",
+    "answer": "Gdy $|q|=1$ oraz $q\\ne1$, ponieważ\n$$\n\\left|\\sum_{k=0}^Nq^k\\right|\n=\\left|\\frac{1-q^{N+1}}{1-q}\\right|\n\\le\\frac2{|1-q|}.\n$$"
+  },
+  {
+    "id": "c013",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: szeregi potegowe",
+    "source": "hashcards/01-szeregi-potegowe.md",
+    "question": "Czy różniczkowanie szeregu potęgowego zmienia jego promień zbieżności?",
+    "answer": "Nie. Szereg i jego pochodna mają ten sam promień zbieżności:\n$$\n\\left(\\sum_{n=0}^\\infty a_n(z-z_0)^n\\right)'\n=\\sum_{n=1}^\\infty na_n(z-z_0)^{n-1}.\n$$"
+  },
+  {
+    "id": "c014",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: szeregi potegowe",
+    "source": "hashcards/01-szeregi-potegowe.md",
+    "question": "Jak rozwinąć $\\frac1{1-z}$ w szereg potęgowy?",
+    "answer": "$$\n\\frac1{1-z}=\\sum_{n=0}^\\infty z^n,\\qquad |z|<1.\n$$"
+  },
+  {
+    "id": "c015",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: szeregi potegowe",
+    "source": "hashcards/01-szeregi-potegowe.md",
+    "question": "Jak rozwinąć funkcję wymierną wokół punktu $z_0$?",
+    "answer": "Przepisz każdy składnik do postaci\n$$\n\\frac{C}{1-w(z)}\n$$\ni użyj szeregu geometrycznego. Warunek $|w(z)|<1$ wyznacza koło zbieżności."
+  },
+  {
+    "id": "c016",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: szeregi potegowe",
+    "source": "hashcards/01-szeregi-potegowe.md",
+    "question": "Jaką własność warto zapamiętać z tej reguły?",
+    "answer": "Promień zbieżności szeregu Taylora funkcji holomorficznej wokół $z_0$ sięga co najmniej do [najbliższego punktu osobliwego]."
+  },
+  {
+    "id": "c017",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: szeregi potegowe",
+    "source": "hashcards/01-szeregi-potegowe.md",
+    "question": "Podaj nierówność Cauchy'ego dla współczynników szeregu $f(z)=\\sum a_nz^n$.",
+    "answer": "Jeśli $f$ jest holomorficzna i $|f(z)|\\le M$ w kole $|z|<R$, to\n$$\n|a_n|\\le\\frac{M}{R^n}.\n$$"
+  },
+  {
+    "id": "c018",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: szeregi potegowe",
+    "source": "hashcards/01-szeregi-potegowe.md",
+    "question": "Co mówi twierdzenie Liouville'a?",
+    "answer": "Każda całkowita i ograniczona funkcja jest stała."
+  },
+  {
+    "id": "c019",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: Laurent i osobliwosci",
+    "source": "hashcards/02-laurent-osobliwosci.md",
+    "question": "W jakim obszarze zbiega szereg Laurenta?",
+    "answer": "W pierścieniu\n$$\nr<|z-z_0|<R,\n$$\nbezwzględnie i niemal jednostajnie."
+  },
+  {
+    "id": "c020",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: Laurent i osobliwosci",
+    "source": "hashcards/02-laurent-osobliwosci.md",
+    "question": "Jak znaleźć wewnętrzny promień zbieżności części głównej szeregu Laurenta?",
+    "answer": "Podstaw\n$$\nw=\\frac1{z-z_0}.\n$$\nJeśli otrzymany szereg potęgowy ma promień $\\rho$, to $r=1/\\rho$."
+  },
+  {
+    "id": "c021",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: Laurent i osobliwosci",
+    "source": "hashcards/02-laurent-osobliwosci.md",
+    "question": "Czy rozwinięcie Laurenta funkcji jest takie samo we wszystkich pierścieniach wokół $z_0$?",
+    "answer": "Nie. Zależy od pierścienia, bo ten sam czynnik geometryczny rozwija się inaczej dla $|w|<1$ i $|w|>1$."
+  },
+  {
+    "id": "c022",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: Laurent i osobliwosci",
+    "source": "hashcards/02-laurent-osobliwosci.md",
+    "question": "Jak rozwinąć $\\frac1{z-a}$ dla $|z|<|a|$?",
+    "answer": "$$\n\\frac1{z-a}\n=-\\frac1a\\frac1{1-z/a}\n=-\\sum_{n=0}^{\\infty}\\frac{z^n}{a^{n+1}}.\n$$"
+  },
+  {
+    "id": "c023",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: Laurent i osobliwosci",
+    "source": "hashcards/02-laurent-osobliwosci.md",
+    "question": "Jak rozwinąć $\\frac1{z-a}$ dla $|z|>|a|$?",
+    "answer": "$$\n\\frac1{z-a}\n=\\frac1z\\frac1{1-a/z}\n=\\sum_{n=0}^{\\infty}\\frac{a^n}{z^{n+1}}.\n$$"
+  },
+  {
+    "id": "c024",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: Laurent i osobliwosci",
+    "source": "hashcards/02-laurent-osobliwosci.md",
+    "question": "Jak wyznaczyć pierścienie dla rozwinięć Laurenta funkcji wymiernej wokół $z_0$?",
+    "answer": "Policz odległości od $z_0$ do wszystkich punktów osobliwych i uporządkuj je. Kolejne odległości są granicami pierścieni."
+  },
+  {
+    "id": "c025",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: Laurent i osobliwosci",
+    "source": "hashcards/02-laurent-osobliwosci.md",
+    "question": "Jak rozpoznać osobliwość pozorną z szeregu Laurenta?",
+    "answer": "Część główna znika, czyli $a_n=0$ dla wszystkich $n<0$."
+  },
+  {
+    "id": "c026",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: Laurent i osobliwosci",
+    "source": "hashcards/02-laurent-osobliwosci.md",
+    "question": "Jak rozpoznać biegun rzędu $k$ z szeregu Laurenta?",
+    "answer": "Część główna jest skończona i zaczyna się od\n$$\n\\frac{a_{-k}}{(z-z_0)^k},\\qquad a_{-k}\\ne0.\n$$"
+  },
+  {
+    "id": "c027",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: Laurent i osobliwosci",
+    "source": "hashcards/02-laurent-osobliwosci.md",
+    "question": "Jak rozpoznać osobliwość istotną z szeregu Laurenta?",
+    "answer": "Część główna ma nieskończenie wiele niezerowych wyrazów."
+  },
+  {
+    "id": "c028",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: Laurent i osobliwosci",
+    "source": "hashcards/02-laurent-osobliwosci.md",
+    "question": "Podaj kryterium Riemanna dla osobliwości pozornej.",
+    "answer": "Izolowana osobliwość $z_0$ jest pozorna wtedy i tylko wtedy, gdy $f$ jest ograniczona w pewnym sąsiedztwie $z_0$."
+  },
+  {
+    "id": "c029",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: Laurent i osobliwosci",
+    "source": "hashcards/02-laurent-osobliwosci.md",
+    "question": "Jak granica funkcji klasyfikuje izolowaną osobliwość?",
+    "answer": "- Granica właściwa: osobliwość pozorna.\n- Granica równa $\\infty$: biegun.\n- Granica nie istnieje: osobliwość istotna."
+  },
+  {
+    "id": "c030",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: Laurent i osobliwosci",
+    "source": "hashcards/02-laurent-osobliwosci.md",
+    "question": "Jak ustalić rząd bieguna $z_0$?",
+    "answer": "Znajdź najmniejsze $k\\ge1$, dla którego\n$$\n\\lim_{z\\to z_0}(z-z_0)^kf(z)\n$$\njest właściwa i niezerowa. Wtedy biegun ma rząd $k$."
+  },
+  {
+    "id": "c031",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: Laurent i osobliwosci",
+    "source": "hashcards/02-laurent-osobliwosci.md",
+    "question": "Jaki jest związek między biegunem $f$ a zerem $1/f$?",
+    "answer": "$z_0$ jest biegunem rzędu $k$ funkcji $f$ wtedy i tylko wtedy, gdy jest zerem rzędu $k$ funkcji $1/f$."
+  },
+  {
+    "id": "c032",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: Laurent i osobliwosci",
+    "source": "hashcards/02-laurent-osobliwosci.md",
+    "question": "Jak bada się osobliwość funkcji $f$ w nieskończoności?",
+    "answer": "Bada się osobliwość funkcji\n$$\ng(w)=f(1/w)\n$$\nw punkcie $w=0$."
+  },
+  {
+    "id": "c033",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: Laurent i osobliwosci",
+    "source": "hashcards/02-laurent-osobliwosci.md",
+    "question": "Jaką osobliwość ma $e^{1/z}$ w $z=0$?",
+    "answer": "Istotną, bo\n$$\ne^{1/z}=\\sum_{n=0}^{\\infty}\\frac1{n!z^n}\n$$\nma nieskończoną część główną."
+  },
+  {
+    "id": "c034",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: Laurent i osobliwosci",
+    "source": "hashcards/02-laurent-osobliwosci.md",
+    "question": "Jaką osobliwość ma $\\frac{\\cos z-1}{z^2}$ w $z=0$?",
+    "answer": "Pozorną, ponieważ\n$$\n\\frac{\\cos z-1}{z^2}\n=-\\frac1{2!}+\\frac{z^2}{4!}-\\cdots\n$$\nnie ma części głównej."
+  },
+  {
+    "id": "c035",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: Laurent i osobliwosci",
+    "source": "hashcards/02-laurent-osobliwosci.md",
+    "question": "Jak klasyfikować osobliwość ilorazu $f/g$ w punkcie $z_0$ za pomocą rzędów zer?",
+    "answer": "Jeśli $f$ ma zero rzędu $m$, a $g$ zero rzędu $n$, to:\n\n- $m\\ge n$: osobliwość jest pozorna,\n- $m<n$: jest biegunem rzędu $n-m$."
+  },
+  {
+    "id": "c036",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: residua i calki",
+    "source": "hashcards/03-residua-i-calki.md",
+    "question": "Jakie jest residuum w punkcie pozornie osobliwym?",
+    "answer": "$$\n\\Res_{z_0}f=0.\n$$"
+  },
+  {
+    "id": "c037",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: residua i calki",
+    "source": "hashcards/03-residua-i-calki.md",
+    "question": "Jak policzyć residuum w biegunie prostym?",
+    "answer": "$$\n\\Res_{z_0}f=\\lim_{z\\to z_0}(z-z_0)f(z).\n$$"
+  },
+  {
+    "id": "c038",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: residua i calki",
+    "source": "hashcards/03-residua-i-calki.md",
+    "question": "Jak policzyć residuum ilorazu $g/h$ w prostym zerze mianownika?",
+    "answer": "Jeśli $h(z_0)=0$ i $h'(z_0)\\ne0$, to\n$$\n\\Res_{z_0}\\frac{g}{h}=\\frac{g(z_0)}{h'(z_0)}.\n$$"
+  },
+  {
+    "id": "c039",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: residua i calki",
+    "source": "hashcards/03-residua-i-calki.md",
+    "question": "Jak policzyć residuum w biegunie rzędu $k$?",
+    "answer": "$$\n\\Res_{z_0}f\n=\\frac1{(k-1)!}\n\\lim_{z\\to z_0}\n\\frac{d^{k-1}}{dz^{k-1}}\n\\left((z-z_0)^kf(z)\\right).\n$$"
+  },
+  {
+    "id": "c040",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: residua i calki",
+    "source": "hashcards/03-residua-i-calki.md",
+    "question": "Jak policzyć residuum w punkcie istotnie osobliwym?",
+    "answer": "Rozwiń funkcję w szereg Laurenta i odczytaj współczynnik przy $(z-z_0)^{-1}$."
+  },
+  {
+    "id": "c041",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: residua i calki",
+    "source": "hashcards/03-residua-i-calki.md",
+    "question": "Podaj twierdzenie o residuach.",
+    "answer": "Jeśli wewnątrz dodatnio zorientowanej krzywej $\\Gamma$ leżą izolowane osobliwości $z_1,\\ldots,z_n$, to\n$$\n\\int_\\Gamma f(z)\\,dz\n=2\\pi i\\sum_{k=1}^n\\Res_{z_k}f.\n$$"
+  },
+  {
+    "id": "c042",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: residua i calki",
+    "source": "hashcards/03-residua-i-calki.md",
+    "question": "Jakie punkty osobliwe uwzględnia się w twierdzeniu o residuach?",
+    "answer": "Tylko punkty leżące wewnątrz konturu. Żaden punkt osobliwy nie może leżeć na konturze."
+  },
+  {
+    "id": "c043",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: residua i calki",
+    "source": "hashcards/03-residua-i-calki.md",
+    "question": "Jaki jest algorytm liczenia całki konturowej przez residua?",
+    "answer": "1. Znajdź osobliwości funkcji.\n2. Ustal, które leżą wewnątrz konturu.\n3. Policz ich residua.\n4. Zsumuj je i pomnóż przez $2\\pi i$."
+  },
+  {
+    "id": "c044",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: residua i calki",
+    "source": "hashcards/03-residua-i-calki.md",
+    "question": "Jakie oszacowanie zeruje całkę po półokręgu o promieniu $R$?",
+    "answer": "Jeśli na łuku\n$$\n|f(z)|\\le\\frac{M}{|z|^\\alpha},\\qquad \\alpha>1,\n$$\nto\n$$\n\\left|\\int_{C_R}f(z)\\,dz\\right|\n\\le\\pi R\\frac{M}{R^\\alpha}\\to0.\n$$"
+  },
+  {
+    "id": "c045",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: residua i calki",
+    "source": "hashcards/03-residua-i-calki.md",
+    "question": "Jak szybciej sprawdzić, czy całka funkcji wymiernej po dużym półokręgu znika?",
+    "answer": "Dla $f(z)=P(z)/Q(z)$ wystarczy zwykle\n$$\n\\deg Q\\ge\\deg P+2.\n$$\nWtedy $f(z)=O(|z|^{-2})$ lub szybciej."
+  },
+  {
+    "id": "c046",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: residua i calki",
+    "source": "hashcards/03-residua-i-calki.md",
+    "question": "Jaką funkcję zespoloną wybrać dla całki zawierającej $\\cos x$?",
+    "answer": "Zastąp $\\cos x$ częścią rzeczywistą wykładnika:\n$$\n\\cos x=\\Re(e^{ix}),\n\\qquad\nF(z)=R(z)e^{iz}.\n$$\nNa końcu weź część rzeczywistą wyniku."
+  },
+  {
+    "id": "c047",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: residua i calki",
+    "source": "hashcards/03-residua-i-calki.md",
+    "question": "Jaką funkcję zespoloną wybrać dla całki zawierającej $\\sin x$?",
+    "answer": "$$\n\\sin x=\\Im(e^{ix}),\n\\qquad\nF(z)=R(z)e^{iz}.\n$$\nNa końcu weź część urojoną wyniku."
+  },
+  {
+    "id": "c048",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: residua i calki",
+    "source": "hashcards/03-residua-i-calki.md",
+    "question": "Dlaczego dla $z=x+iy$ w górnej półpłaszczyźnie czynnik $e^{iz}$ jest wygodny?",
+    "answer": "$$\n|e^{iz}|=|e^{ix-y}|=e^{-y}\\le1.\n$$\nNie psuje więc oszacowania na górnym półokręgu."
+  },
+  {
+    "id": "c049",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: residua i calki",
+    "source": "hashcards/03-residua-i-calki.md",
+    "question": "Jaki jest algorytm dla całki $\\int_{-\\infty}^{\\infty}R(x)\\,dx$ przez górny półokrąg?",
+    "answer": "1. Weź $f(z)=R(z)$.\n2. Sprawdź brak biegunów na osi rzeczywistej.\n3. Sprawdź zbieżność i zanik całki po łuku.\n4. Policz residua biegunów z $\\Im z>0$.\n5. Użyj $\\int_{-\\infty}^{\\infty}R(x)\\,dx=2\\pi i\\sum\\Res f$."
+  },
+  {
+    "id": "c050",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: residua i calki",
+    "source": "hashcards/03-residua-i-calki.md",
+    "question": "Jaki jest algorytm dla całki z $\\cos x$ lub $\\sin x$?",
+    "answer": "1. Weź $F(z)=R(z)e^{iz}$.\n2. Zamknij kontur w górnej półpłaszczyźnie.\n3. Policz residua biegunów z $\\Im z>0$.\n4. Oblicz $\\int_{-\\infty}^{\\infty}R(x)e^{ix}\\,dx$.\n5. Weź część rzeczywistą dla cosinusa albo urojoną dla sinusa."
+  },
+  {
+    "id": "c051",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: residua i calki",
+    "source": "hashcards/03-residua-i-calki.md",
+    "question": "Jak wykorzystać parzystość przy całkach od $0$ do $\\infty$?",
+    "answer": "Jeśli $f$ jest parzysta i całkowalna, to\n$$\n\\int_0^\\infty f(x)\\,dx\n=\\frac12\\int_{-\\infty}^{\\infty}f(x)\\,dx.\n$$"
+  },
+  {
+    "id": "c052",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: residua i calki",
+    "source": "hashcards/03-residua-i-calki.md",
+    "question": "Jak zamienić całkę trygonometryczną po $[0,2\\pi]$ na całkę po okręgu jednostkowym?",
+    "answer": "Podstaw\n$$\nz=e^{it},\\quad dz=iz\\,dt,\\quad\n\\cos t=\\frac12\\left(z+\\frac1z\\right),\\quad\n\\sin t=\\frac1{2i}\\left(z-\\frac1z\\right).\n$$"
+  },
+  {
+    "id": "c053",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: residua i calki",
+    "source": "hashcards/03-residua-i-calki.md",
+    "question": "Jak zdefiniowane jest residuum w nieskończoności?",
+    "answer": "$$\n\\Res_\\infty f\n=-\\Res_{0}\\left(\\frac1{z^2}f\\left(\\frac1z\\right)\\right).\n$$"
+  },
+  {
+    "id": "c054",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: residua i calki",
+    "source": "hashcards/03-residua-i-calki.md",
+    "question": "Jaki jest związek sumy wszystkich residuów skończonych z residuum w nieskończoności?",
+    "answer": "$$\n\\sum_k\\Res_{z_k}f=-\\Res_\\infty f.\n$$"
+  },
+  {
+    "id": "c055",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: maksimum, Schwarz i Rouche",
+    "source": "hashcards/04-maksimum-schwarz-rouche.md",
+    "question": "Jak zacząć zadanie o $\\max_{|z|\\le R}|f(z)|$ dla funkcji holomorficznej?",
+    "answer": "Z zasady maksimum ogranicz szukanie do brzegu:\n$$\n|z|=R.\n$$\nNastępnie podstaw $z=Re^{it}$ i maksymalizuj funkcję rzeczywistą $|f(Re^{it})|^2$."
+  },
+  {
+    "id": "c056",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: maksimum, Schwarz i Rouche",
+    "source": "hashcards/04-maksimum-schwarz-rouche.md",
+    "question": "Dlaczego zwykle maksymalizuje się $|f(z)|^2$, a nie $|f(z)|$?",
+    "answer": "Kwadrat usuwa pierwiastek i pozwala użyć\n$$\n|f(z)|^2=f(z)\\overline{f(z)}.\n$$\nNa okręgu można też zastąpić $\\bar z$ przez $R^2/z$."
+  },
+  {
+    "id": "c057",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: maksimum, Schwarz i Rouche",
+    "source": "hashcards/04-maksimum-schwarz-rouche.md",
+    "question": "Co mówi zasada minimum modułu?",
+    "answer": "Jeśli $f$ jest holomorficzna i nie ma zer, to niestała funkcja $|f|$ nie osiąga minimum wewnątrz obszaru."
+  },
+  {
+    "id": "c058",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: maksimum, Schwarz i Rouche",
+    "source": "hashcards/04-maksimum-schwarz-rouche.md",
+    "question": "Co trzeba sprawdzić przed użyciem zasady minimum?",
+    "answer": "Czy funkcja ma zera w badanym obszarze. Jeśli ma, minimum modułu wynosi $0$."
+  },
+  {
+    "id": "c059",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: maksimum, Schwarz i Rouche",
+    "source": "hashcards/04-maksimum-schwarz-rouche.md",
+    "question": "Podaj lemat Schwarza.",
+    "answer": "Jeśli $f$ jest holomorficzna w kole jednostkowym, $|f(z)|\\le1$ i $f(0)=0$, to\n$$\n|f(z)|\\le|z|,\\qquad |f'(0)|\\le1.\n$$\nRówność w punkcie niezerowym zachodzi tylko dla $f(z)=e^{i\\alpha}z$."
+  },
+  {
+    "id": "c060",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: maksimum, Schwarz i Rouche",
+    "source": "hashcards/04-maksimum-schwarz-rouche.md",
+    "question": "Jaki trik rozpoczyna dowód lub zastosowanie lematu Schwarza?",
+    "answer": "Ponieważ $f(0)=0$, zdefiniuj\n$$\ng(z)=\n\\begin{cases}\nf(z)/z,&z\\ne0,\\\\\nf'(0),&z=0.\n\\end{cases}\n$$\nFunkcja $g$ jest holomorficzna."
+  },
+  {
+    "id": "c061",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: maksimum, Schwarz i Rouche",
+    "source": "hashcards/04-maksimum-schwarz-rouche.md",
+    "question": "Podaj nierówność Schwarza-Picka dla pochodnej.",
+    "answer": "Jeśli $f:\\mathbb D\\to\\mathbb D$ jest holomorficzna, to\n$$\n\\frac{|f'(z)|}{1-|f(z)|^2}\n\\le\n\\frac1{1-|z|^2}.\n$$"
+  },
+  {
+    "id": "c062",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: maksimum, Schwarz i Rouche",
+    "source": "hashcards/04-maksimum-schwarz-rouche.md",
+    "question": "Jak sprawdzić, czy zadane wartości $f(z_0)$ i $f'(z_0)$ są możliwe dla odwzorowania $f:\\mathbb D\\to\\mathbb D$?",
+    "answer": "Podstaw dane do nierówności Schwarza-Picka:\n$$\n|f'(z_0)|\n\\le\n\\frac{1-|f(z_0)|^2}{1-|z_0|^2}.\n$$\nJeśli warunek nie zachodzi, taka funkcja nie istnieje."
+  },
+  {
+    "id": "c063",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: maksimum, Schwarz i Rouche",
+    "source": "hashcards/04-maksimum-schwarz-rouche.md",
+    "question": "Co mówi zasada argumentu dla funkcji meromorficznej?",
+    "answer": "$$\n\\frac1{2\\pi i}\\int_\\Gamma\\frac{f'(z)}{f(z)}\\,dz=N-P,\n$$\ngdzie $N$ to liczba zer, a $P$ liczba biegunów wewnątrz $\\Gamma$, liczone z krotnościami."
+  },
+  {
+    "id": "c064",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: maksimum, Schwarz i Rouche",
+    "source": "hashcards/04-maksimum-schwarz-rouche.md",
+    "question": "Jakie residuum ma $f'/f$ w zerze $f$ rzędu $k$?",
+    "answer": "$$\n\\Res_{z_0}\\frac{f'}f=k.\n$$"
+  },
+  {
+    "id": "c065",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: maksimum, Schwarz i Rouche",
+    "source": "hashcards/04-maksimum-schwarz-rouche.md",
+    "question": "Jakie residuum ma $f'/f$ w biegunie $f$ rzędu $k$?",
+    "answer": "$$\n\\Res_{z_0}\\frac{f'}f=-k.\n$$"
+  },
+  {
+    "id": "c066",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: maksimum, Schwarz i Rouche",
+    "source": "hashcards/04-maksimum-schwarz-rouche.md",
+    "question": "Podaj twierdzenie Rouchégo.",
+    "answer": "Jeśli $f$ i $g$ są holomorficzne, a na konturze $\\Gamma$\n$$\n|g(z)|<|f(z)|,\n$$\nto $f$ oraz $f+g$ mają wewnątrz $\\Gamma$ tyle samo zer, licząc z krotnościami."
+  },
+  {
+    "id": "c067",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: maksimum, Schwarz i Rouche",
+    "source": "hashcards/04-maksimum-schwarz-rouche.md",
+    "question": "Jaki jest algorytm użycia twierdzenia Rouchégo dla wielomianu na okręgu $|z|=R$?",
+    "answer": "1. Wybierz dominujący składnik lub grupę składników $f$.\n2. Oznacz resztę przez $g$.\n3. Oszacuj od dołu $|f|$ i od góry $|g|$ na $|z|=R$.\n4. Wykaż ścisłą nierówność $|g|<|f|$.\n5. Policz zera prostszej funkcji $f$ w kole."
+  },
+  {
+    "id": "c068",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: maksimum, Schwarz i Rouche",
+    "source": "hashcards/04-maksimum-schwarz-rouche.md",
+    "question": "Jaki składnik wielomianu zwykle dominuje na dużym okręgu?",
+    "answer": "Składnik najwyższego stopnia, ponieważ na $|z|=R$ ma moduł $|a_n|R^n$."
+  },
+  {
+    "id": "c069",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: maksimum, Schwarz i Rouche",
+    "source": "hashcards/04-maksimum-schwarz-rouche.md",
+    "question": "Jaki składnik wielomianu może dominować na małym okręgu?",
+    "answer": "Wyraz stały albo składnik niskiego stopnia. Trzeba porównać ich moduły z sumą modułów pozostałych składników."
+  },
+  {
+    "id": "c070",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: maksimum, Schwarz i Rouche",
+    "source": "hashcards/04-maksimum-schwarz-rouche.md",
+    "question": "Jak policzyć liczbę zer w pierścieniu $r<|z|<R$?",
+    "answer": "Policz liczbę zer w kole $|z|<R$ i odejmij liczbę zer w kole $|z|<r$. Trzeba też wykluczyć zera na obu okręgach."
+  },
+  {
+    "id": "c071",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: maksimum, Schwarz i Rouche",
+    "source": "hashcards/04-maksimum-schwarz-rouche.md",
+    "question": "Dlaczego nierówność w twierdzeniu Rouchégo musi być ścisła?",
+    "answer": "Ścisłość gwarantuje, że $f+\\lambda g$ nie zeruje się na konturze dla $\\lambda\\in[0,1]$. Bez niej liczba zer może zmienić się przez przejście zera przez kontur."
+  },
+  {
+    "id": "c072",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: maksimum, Schwarz i Rouche",
+    "source": "hashcards/04-maksimum-schwarz-rouche.md",
+    "question": "Jak użyć Rouchégo do równania $e^z=p(z)$ w małym kole?",
+    "answer": "Przenieś wszystko na jedną stronę i wybierz prostszy dominujący składnik na brzegu, np. część wielomianową albo początkowe wyrazy szeregu $e^z$. Następnie porównaj moduły na okręgu."
+  },
+  {
+    "id": "c073",
+    "topic": "Funkcje zespolone",
+    "deck": "Listy 6-9: maksimum, Schwarz i Rouche",
+    "source": "hashcards/04-maksimum-schwarz-rouche.md",
+    "question": "Co oznacza geometryczna wersja zasady argumentu?",
+    "answer": "Liczba zer funkcji wewnątrz konturu jest liczbą okrążeń obrazu $f(\\Gamma)$ wokół zera:\n$$\nN=\\frac1{2\\pi}\\Delta_\\Gamma\\arg f.\n$$"
+  },
+  {
+    "id": "c074",
+    "topic": "Statystyka",
+    "deck": "Statystyka — listy 6–10",
+    "source": "reference/statystyka-listy-6-10.html",
+    "question": "Estymacja",
+    "answer": "Momenty: EX^j=(1/n)ΣX_i^j\nMLE: argmax l(θ)"
+  },
+  {
+    "id": "c075",
+    "topic": "Statystyka",
+    "deck": "Statystyka — listy 6–10",
+    "source": "reference/statystyka-listy-6-10.html",
+    "question": "Ryzyko",
+    "answer": "MSE = Var + bias²\nR(T,θ)=E L(T,θ)"
+  },
+  {
+    "id": "c076",
+    "topic": "Statystyka",
+    "deck": "Statystyka — listy 6–10",
+    "source": "reference/statystyka-listy-6-10.html",
+    "question": "Dostateczność",
+    "answer": "f(x;θ)=g_θ(T(x))h(x)"
+  },
+  {
+    "id": "c077",
+    "topic": "Statystyka",
+    "deck": "Statystyka — listy 6–10",
+    "source": "reference/statystyka-listy-6-10.html",
+    "question": "UMVUE",
+    "answer": "T dostateczna + zupełna\nW nieobciążony\nE[W|T]"
+  },
+  {
+    "id": "c078",
+    "topic": "Statystyka",
+    "deck": "Statystyka — listy 6–10",
+    "source": "reference/statystyka-listy-6-10.html",
+    "question": "Przedziały",
+    "answer": "a ≤ Q(X;θ) ≤ b\n→ odwróć względem θ"
+  },
+  {
+    "id": "c079",
+    "topic": "Statystyka",
+    "deck": "Statystyka — listy 6–10",
+    "source": "reference/statystyka-listy-6-10.html",
+    "question": "Testy",
+    "answer": "NP: f1/f0 > c\nMLR: ogon T\nLR: sup_H0 l / sup_Θ l"
+  }
+]

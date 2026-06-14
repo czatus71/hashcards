@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hashcards</title>
+  <meta name="description" content="Przegląd fiszek z funkcji zespolonych i statystyki z wyszukiwaniem i losowaniem.">
+  <style>
+    :root{--bg:#f6f1e8;--paper:#fffdf8;--ink:#142033;--muted:#5f6b7a;--line:#e4d7c4;--accent:#7c2d12;--accent2:#1d4ed8;--good:#166534;--warn:#a16207;--shadow:0 12px 40px rgba(20,32,51,.08)}
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;background:linear-gradient(180deg,#f8f3e8 0,#f6f1e8 40%,#f3ede2 100%);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:var(--accent2);text-decoration:none} a:hover{text-decoration:underline}
+    .wrap{max-width:1240px;margin:0 auto;padding:28px 16px 60px}
+    .shell{background:rgba(255,253,248,.95);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);overflow:hidden}
+    .hero{padding:28px 28px 18px;border-bottom:1px solid var(--line);background:radial-gradient(circle at top right,#fde68a66,transparent 36%),#fffdf8}
+    h1{margin:0;font-size:clamp(2rem,5vw,3.2rem);line-height:1.05;letter-spacing:-.03em}
+    .lead{margin:.65rem 0 0;max-width:74ch;color:#475569;font-size:1.05rem}
+    .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    .bar{display:grid;grid-template-columns:1.3fr .9fr .9fr auto auto;gap:10px;margin-top:18px}
+    .bar input,.bar select,.btn{height:44px;border:1px solid var(--line);border-radius:12px;background:#fff;padding:0 14px;font:inherit;color:var(--ink)}
+    .bar input{width:100%}
+    .btn{cursor:pointer;font-weight:650;background:#fff}
+    .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+    .btn.ghost{background:#fff}
+    .stats{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .pill{display:inline-flex;align-items:center;gap:.45rem;padding:.4rem .75rem;border-radius:999px;border:1px solid var(--line);background:#fff;color:#334155;font-size:.92rem}
+    .pill b{font-size:.98rem;color:var(--ink)}
+    .content{padding:22px 22px 28px}
+    .panel{display:grid;grid-template-columns:380px 1fr;gap:18px;align-items:start}
+    .viewer{position:sticky;top:14px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 8px 26px rgba(20,32,51,.05)}
+    .viewer .meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+    .tag{display:inline-flex;align-items:center;padding:.22rem .55rem;border-radius:999px;background:#e2e8f0;color:#334155;font-size:.78rem;font-weight:700;letter-spacing:.01em}
+    .tag.topic{background:#dbeafe;color:#1e3a8a}
+    .tag.deck{background:#fef3c7;color:#92400e}
+    .question{font-size:1.1rem;font-weight:750;line-height:1.45;margin:10px 0 12px}
+    .answer{border-top:1px solid var(--line);padding-top:14px;white-space:pre-wrap;overflow-wrap:anywhere;min-height:220px}
+    .answer.hidden{display:none}
+    .side-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .hint{color:var(--muted);font-size:.9rem;margin-top:10px}
+    .grid-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:12px}
+    .grid-head h2{margin:0;font-size:1.1rem}
+    .grid-head .muted{color:var(--muted);font-size:.92rem}
+    .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+    .card{display:flex;flex-direction:column;gap:10px;border:1px solid var(--line);border-radius:18px;background:#fff;padding:15px;cursor:pointer;transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease}
+    .card:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(20,32,51,.07);border-color:#d3c1aa}
+    .card.active{border-color:var(--accent2);box-shadow:0 10px 28px rgba(29,78,216,.12)}
+    .card h3{margin:0;font-size:1rem;line-height:1.35}
+    .snippet{color:#364152;white-space:pre-wrap;overflow:hidden;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;font-size:.94rem}
+    .card .footer{display:flex;justify-content:space-between;gap:8px;align-items:center;color:var(--muted);font-size:.8rem;margin-top:auto}
+    .empty{padding:26px;border:1px dashed var(--line);border-radius:18px;background:#fff;color:var(--muted)}
+    footer{padding:0 22px 24px;color:var(--muted);font-size:.9rem}
+    @media (max-width: 1020px){.panel{grid-template-columns:1fr}.viewer{position:static}.bar{grid-template-columns:1fr 1fr}.bar input{grid-column:1 / -1}}
+    @media (max-width: 680px){.wrap{padding:10px}.hero,.content,footer{padding-left:14px;padding-right:14px}.bar{grid-template-columns:1fr}.cards{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="shell">
+      <header class="hero">
+        <div class="row">
+          <span class="tag topic">Hashcards</span>
+          <span class="tag deck">Funkcje zespolone + statystyka</span>
+        </div>
+        <h1>Przegląd fiszek</h1>
+        <p class="lead">Szybki, statyczny interfejs do przeglądania, filtrowania i losowania fiszek. W środku są wszystkie fiszki z funkcji zespolonych oraz skrót ze statystyki.</p>
+
+        <div class="bar">
+          <input id="q" type="search" placeholder="Szukaj w pytaniu, odpowiedzi, dziale..." autocomplete="off">
+          <select id="topic"></select>
+          <select id="deck"></select>
+          <button class="btn primary" id="randomBtn">Losuj</button>
+          <button class="btn ghost" id="flipBtn">Pokaż / ukryj odpowiedź</button>
+        </div>
+
+        <div class="stats" id="stats"></div>
+      </header>
+
+      <main class="content">
+        <div class="panel">
+          <section class="viewer" aria-live="polite">
+            <div class="meta" id="viewerMeta"></div>
+            <div class="question" id="viewerQuestion">Wczytywanie...</div>
+            <div class="answer" id="viewerAnswer"></div>
+            <div class="side-actions">
+              <button class="btn" id="prevBtn">Poprzednia</button>
+              <button class="btn" id="nextBtn">Następna</button>
+              <button class="btn" id="copyBtn">Kopiuj Q/A</button>
+            </div>
+            <div class="hint">Skróty: / szukaj, spacja pokaż odpowiedź, ← → nawigacja, r losuj.</div>
+          </section>
+
+          <section>
+            <div class="grid-head">
+              <div>
+                <h2>Wyniki</h2>
+                <div class="muted" id="resultInfo"></div>
+              </div>
+            </div>
+            <div id="cards" class="cards"></div>
+          </section>
+        </div>
+      </main>
+      <footer>
+        Repo gotowe do GitHub Pages. Jeśli chcesz, mogę potem dodać edytor kart albo osobne działy na nowe tematy.
+      </footer>
+    </div>
+  </div>
+
+<script>
+const state = {cards:[], filtered:[], activeIndex:0, showAnswer:false};
+const els = {
+  q: document.getElementById('q'),
+  topic: document.getElementById('topic'),
+  deck: document.getElementById('deck'),
+  stats: document.getElementById('stats'),
+  cards: document.getElementById('cards'),
+  resultInfo: document.getElementById('resultInfo'),
+  viewerMeta: document.getElementById('viewerMeta'),
+  viewerQuestion: document.getElementById('viewerQuestion'),
+  viewerAnswer: document.getElementById('viewerAnswer'),
+  flipBtn: document.getElementById('flipBtn'),
+  randomBtn: document.getElementById('randomBtn'),
+  prevBtn: document.getElementById('prevBtn'),
+  nextBtn: document.getElementById('nextBtn'),
+  copyBtn: document.getElementById('copyBtn')
+};
+
+const escapeHTML = s => s.replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const normalize = s => s.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '');
+const preview = s => s.replace(/\s+/g, ' ').trim().slice(0, 180) + (s.replace(/\s+/g, ' ').trim().length > 180 ? '…' : '');
+
+function buildFilters() {
+  const topics = ['Wszystkie', ...new Set(state.cards.map(c => c.topic))];
+  const decks = ['Wszystkie działy', ...new Set(state.cards.map(c => c.deck))];
+  els.topic.innerHTML = topics.map(t => `<option value="${escapeHTML(t)}">${escapeHTML(t)}</option>`).join('');
+  els.deck.innerHTML = decks.map(t => `<option value="${escapeHTML(t)}">${escapeHTML(t)}</option>`).join('');
+}
+
+function renderStats() {
+  const byTopic = Object.fromEntries([...new Set(state.cards.map(c => c.topic))].map(t => [t, state.cards.filter(c => c.topic === t).length]));
+  els.stats.innerHTML = [
+    `<span class="pill"><b>${state.cards.length}</b> kart</span>`,
+    ...Object.entries(byTopic).map(([k,v]) => `<span class="pill"><b>${v}</b> ${escapeHTML(k)}</span>`)
+  ].join('');
+}
+
+function getFiltered() {
+  const q = normalize(els.q.value.trim());
+  const topic = els.topic.value;
+  const deck = els.deck.value;
+  return state.cards.filter(c => {
+    if (topic !== 'Wszystkie' && c.topic !== topic) return false;
+    if (deck !== 'Wszystkie działy' && c.deck !== deck) return false;
+    if (!q) return true;
+    const hay = normalize([c.question, c.answer, c.deck, c.topic, c.source].join(' '));
+    return q.split(/\s+/).every(token => hay.includes(token));
+  });
+}
+
+function setActive(idx) {
+  if (!state.filtered.length) return;
+  state.activeIndex = (idx + state.filtered.length) % state.filtered.length;
+  state.showAnswer = false;
+  const card = state.filtered[state.activeIndex];
+  const hash = `#${encodeURIComponent(card.id)}`;
+  if (location.hash !== hash) history.replaceState(null, '', hash);
+  renderViewer();
+  renderGrid();
+}
+
+function renderViewer() {
+  const card = state.filtered[state.activeIndex] || state.cards[0];
+  if (!card) return;
+  els.viewerMeta.innerHTML = [
+    `<span class="tag topic">${escapeHTML(card.topic)}</span>`,
+    `<span class="tag deck">${escapeHTML(card.deck)}</span>`,
+    `<span class="tag">${escapeHTML(card.source)}</span>`
+  ].join('');
+  els.viewerQuestion.textContent = card.question;
+  els.viewerAnswer.textContent = card.answer;
+  els.viewerAnswer.classList.toggle('hidden', !state.showAnswer);
+  els.flipBtn.textContent = state.showAnswer ? 'Ukryj odpowiedź' : 'Pokaż odpowiedź';
+}
+
+function renderGrid() {
+  els.cards.innerHTML = '';
+  const items = state.filtered;
+  els.resultInfo.textContent = items.length ? `Pokazuję ${items.length} z ${state.cards.length} kart` : 'Brak wyników dla tych filtrów.';
+  if (!items.length) {
+    els.cards.innerHTML = '<div class="empty">Nic nie pasuje do wyszukiwania. Spróbuj krótszego hasła albo wyczyść filtry.</div>';
+    return;
+  }
+  for (const card of items) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'card' + (state.filtered[state.activeIndex] && state.filtered[state.activeIndex].id === card.id ? ' active' : '');
+    btn.innerHTML = `
+      <div class="meta"><span class="tag topic">${escapeHTML(card.topic)}</span></div>
+      <h3>${escapeHTML(card.question)}</h3>
+      <div class="snippet">${escapeHTML(preview(card.answer))}</div>
+      <div class="footer"><span>${escapeHTML(card.deck)}</span><span>${escapeHTML(card.source)}</span></div>
+    `;
+    btn.addEventListener('click', () => {
+      state.filtered = getFiltered();
+      const idx = state.filtered.findIndex(x => x.id === card.id);
+      if (idx >= 0) setActive(idx);
+      state.showAnswer = true;
+      renderViewer();
+    });
+    els.cards.appendChild(btn);
+  }
+}
+
+function applyFilters(keepHash=true) {
+  state.filtered = getFiltered();
+  if (!state.filtered.length) {
+    state.activeIndex = 0;
+    state.showAnswer = false;
+    renderViewer();
+    renderGrid();
+    return;
+  }
+  const currentId = location.hash ? decodeURIComponent(location.hash.slice(1)) : null;
+  const existing = currentId ? state.filtered.findIndex(c => c.id === currentId) : -1;
+  state.activeIndex = existing >= 0 ? existing : Math.min(state.activeIndex, state.filtered.length - 1);
+  if (keepHash && state.filtered[state.activeIndex]) history.replaceState(null, '', `#${encodeURIComponent(state.filtered[state.activeIndex].id)}`);
+  renderViewer();
+  renderGrid();
+}
+
+async function init() {
+  const res = await fetch('cards.json');
+  state.cards = await res.json();
+  buildFilters();
+  renderStats();
+  const hashId = location.hash ? decodeURIComponent(location.hash.slice(1)) : null;
+  const hashCard = hashId ? state.cards.find(c => c.id === hashId) : null;
+  if (hashCard) state.activeIndex = state.cards.findIndex(c => c.id === hashId);
+  applyFilters();
+}
+
+els.q.addEventListener('input', () => applyFilters());
+els.topic.addEventListener('change', () => applyFilters());
+els.deck.addEventListener('change', () => applyFilters());
+els.flipBtn.addEventListener('click', () => { state.showAnswer = !state.showAnswer; renderViewer(); });
+els.randomBtn.addEventListener('click', () => { if (!state.filtered.length) return; setActive(Math.floor(Math.random() * state.filtered.length)); state.showAnswer = true; renderViewer(); });
+els.prevBtn.addEventListener('click', () => setActive(state.activeIndex - 1));
+els.nextBtn.addEventListener('click', () => setActive(state.activeIndex + 1));
+els.copyBtn.addEventListener('click', async () => {
+  const card = state.filtered[state.activeIndex]; if (!card) return;
+  await navigator.clipboard.writeText(`Q: ${card.question}\nA: ${card.answer}`);
+  els.copyBtn.textContent = 'Skopiowano';
+  setTimeout(() => els.copyBtn.textContent = 'Kopiuj Q/A', 1000);
+});
+window.addEventListener('hashchange', () => {
+  const id = location.hash ? decodeURIComponent(location.hash.slice(1)) : null;
+  const idx = state.cards.findIndex(c => c.id === id);
+  if (idx >= 0) {
+    state.filtered = getFiltered();
+    state.activeIndex = Math.max(0, state.filtered.findIndex(c => c.id === id));
+    renderViewer();
+    renderGrid();
+  }
+});
+window.addEventListener('keydown', e => {
+  if (e.key === '/' && document.activeElement !== els.q) { e.preventDefault(); els.q.focus(); }
+  if (e.key === ' ' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') { e.preventDefault(); state.showAnswer = !state.showAnswer; renderViewer(); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); setActive(state.activeIndex - 1); }
+  if (e.key === 'ArrowRight') { e.preventDefault(); setActive(state.activeIndex + 1); }
+  if (e.key.toLowerCase() === 'r' && document.activeElement.tagName !== 'INPUT') { e.preventDefault(); els.randomBtn.click(); }
+});
+init().catch(err => {
+  document.getElementById('cards').innerHTML = `<div class="empty">Nie udało się wczytać cards.json: ${escapeHTML(String(err))}</div>`;
+  console.error(err);
+});
+</script>
+</body>
+</html>
